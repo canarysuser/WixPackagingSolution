@@ -86,10 +86,23 @@
 				  
 				  <Publish Event="SpawnDialog"
 						   Value="InvalidPortDialog"
-						   Condition="NOT SITEPORTNO"/>
+						   Condition="NOT SITEPORTNO"
+						   Order="1"/>
 				  <Publish Event="SpawnDialog"
 						   Value="InvalidPortDialog"
-						   Condition="SITEPORTNO &lt;= 1024"/>
+						   Condition="SITEPORTNO &lt;= 1024"
+						   Order="2"/>
+				  <Publish Event="DoAction"
+						   Value="ValidatePort"
+						   Order="3"/>
+				  <Publish Event="SpawnDialog"
+						   Value="InvalidPortDialog"
+						   Order="4"
+						   Condition="PORT_IS_FREE = &quot;False&quot;"/>
+				  <!--<Publish Event="NewDialog"
+						   Value="VerifyReadyDlg"
+						   Order="5"
+						   Condition="PORT_IS_FREE = &quot;True&quot;"/>-->
 			  </Control>
 
 		  </Dialog>

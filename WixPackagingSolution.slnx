@@ -8,6 +8,7 @@
   <Project Path="AspNetCoreLibPackage/AspNetCoreLibPackage.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
     <Platform Solution="*|Any CPU" Project="x64" />
   </Project>
+  <Project Path="PortValidationCA/PortValidationCA.csproj" Id="9804848f-b95c-496b-95fe-198af998abc7" />
   <Project Path="SampleMVCWebApp/SampleMVCWebApp.csproj" />
   <Project Path="SampleWPFApp/SampleWPFApp.csproj" />
   <Project Path="SimplePackage/SimplePackage.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">

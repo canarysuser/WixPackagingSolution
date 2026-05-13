@@ -30,6 +30,7 @@
     <EmbeddedResource Remove="publish\Otherfiles\zh-Hant\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="publish\CA\" />
     <Folder Include="publish\Otherfiles\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,19 @@
 		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 		<Property Id="SITEPORTNO"
 				  Value="80"/>
+		<Property Id="PORT_IS_FREE"
+				  Value="False"/>
+		
+		<!-- Add a reference to the CA.dll -->
+		<Binary Id="PortValidatorBinary"
+				SourceFile="publish\CA\PortValidationCA.CA.dll"/>
+		
+		<!-- Add  Custom Action which needs to get executed immediately ie during the UI phase and not after the InstallFiles phase -->
+		<CustomAction Id="ValidatePort"
+					  BinaryRef="PortValidatorBinary"
+					  DllEntry="PortValidationCA"
+					  Execute="immediate"
+					  Return="check"/>
 
 		<MediaTemplate EmbedCab="yes"/>
 		<iis:WebSite Id="DefaultWebSite"
