@@ -1,0 +1,36 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+
+		<ComponentGroup Id="RuntimeComponentGroup"
+						Directory="INSTALLFOLDER">
+			<Files Include="publish\runtimes\**"
+				   Directory="RUNTIMESFOLDER" />
+		</ComponentGroup>
+
+
+		<ComponentGroup Id="ServiceComponentGroup"
+						Directory="INSTALLFOLDER">
+			<Files Include="publish\otherfiles\**"/>
+			<Component Id="GrpcServiceInstaller"
+					   Guid="{D9A5ACF1-B461-4B1A-A2DC-439F5C9F85D9}">
+				<File Source="publish\SamplegRPCService.exe"
+					  KeyPath="yes"/>
+				<ServiceInstall Id="ServiceInstaller"
+								Type="ownProcess"
+								Name="AspnetGRPCService"
+								Description="Provides gRPC endpoints for applications"
+								DisplayName="gRPC Backend Service"
+								Start="auto"
+								Account="LocalSystem"
+								ErrorControl="normal"/>
+				<ServiceControl Id="ServiceController"
+								Start="install"
+								Stop="both"
+								Remove="uninstall"
+								Name="AspnetGRPCService"
+								Wait="yes"/>
+			</Component>
+		</ComponentGroup>
+
+	</Fragment>
+</Wix>

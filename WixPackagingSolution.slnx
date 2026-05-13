@@ -9,12 +9,16 @@
     <Platform Solution="*|Any CPU" Project="x64" />
   </Project>
   <Project Path="PortValidationCA/PortValidationCA.csproj" Id="9804848f-b95c-496b-95fe-198af998abc7" />
+  <Project Path="SamplegRPCService/SamplegRPCService.csproj" Id="9ce7982e-49c7-4999-ad72-215e4cdca3e9" />
   <Project Path="SampleMVCWebApp/SampleMVCWebApp.csproj" />
   <Project Path="SampleWPFApp/SampleWPFApp.csproj" />
   <Project Path="SimplePackage/SimplePackage.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
     <Platform Solution="*|Any CPU" Project="x64" />
   </Project>
   <Project Path="WixAspNetMvcSetup/WixAspNetMvcSetup.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Platform Solution="*|Any CPU" Project="x64" />
+  </Project>
+  <Project Path="WixGrpcServiceInstaller/WixGrpcServiceInstaller.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" Id="0cfc23b0-eb4e-48c8-8f3a-0f9af36840c1">
     <Platform Solution="*|Any CPU" Project="x64" />
   </Project>
   <Project Path="WixMvcMergeModule/WixMvcMergeModule.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
