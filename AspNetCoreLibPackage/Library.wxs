@@ -1,0 +1,11 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<!-- TODO: Put your code here. -->
+		<Feature Id="CommonFiles">
+			<Files Include="publish\wwwroot\**"
+				   Directory="INSTALLFOLDER" Subdirectory="wwwroot"/>
+			<Files Include="publish\otherfiles\**"
+				   Directory="INSTALLFOLDER" Subdirectory="wwwroot"/>
+		</Feature>
+	</Fragment>
+</Wix>

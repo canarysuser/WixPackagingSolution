@@ -1,0 +1,18 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Module Id="CommonDependencies"  Guid="{E7D344F3-B0A8-4068-A91D-252F70B02DBB}" Language="1033" Version="1.0.0.0">
+
+	  <Files Include="Publish\otherfiles\**" Directory="MergeRedirectFolder" Subdirectory="wwwroot" />
+		<Files Include="Publish\wwwroot\**" Directory="MergeRedirectFolder" Subdirectory="wwwroot"/>
+
+	  <Directory Id="MergeRedirectFolder"></Directory>
+	  <!--<Directory Id="MergeRedirectFolder">
+		  
+		  <Component Guid="{0FC664E7-83C7-4D44-A507-7E5BE94E3881}">
+			  
+			  <File Source="Publish\otherfiles\Azure.Core.dll"/>
+		  </Component>
+		--><!--<Files Include="Publish\otherfiles\**" Directory="MergeRedirectFolder" />
+		<Files Include="Publish\wwwroot\**" Directory="MergeRedirectFolder"/>--><!--
+    </Directory>-->
+  </Module>
+</Wix>

@@ -1,0 +1,26 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+	 xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+	 xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util"
+	 >
+	<Package Id="KWIT.WixWPFSetup" Name="WixWPFSetup" Manufacturer="KWIT" 
+			 
+			 Version="1.0.0" 
+			 ProductCode="{7C77D2E9-3639-4C41-A959-BF64D97F82C4}"
+			 UpgradeCode="{1E562D25-FC6A-4E7B-964A-B997F2904C5C}">
+		
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+		
+		<MediaTemplate EmbedCab="yes"/>
+
+		<WixVariable Id="WixUILicenseRtf" Value="Files\LIcenseAgreement.rtf"/>
+
+		<PropertyRef Id="APP_DATA_FILE_EXISTS"/>
+		
+		<Feature Id="Main" Title="MainAppFeature" Description="Main WPF Application Feature">
+			<ComponentGroupRef Id="AppFiles" />
+			<ComponentGroupRef Id="AppShortcuts" />
+		</Feature>
+
+		<ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER"/>
+	</Package>
+</Wix>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <Property Id="APP_DATA_FILE_EXISTS">
+		  <DirectorySearch Id="AppDataFolderSearch"
+						   Path="C:\Samples">
+			  <FileSearch Id="AppDataFileSearch" Name="app.data"/>
+		  </DirectorySearch>
+	  </Property>
+
+	  <!--Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQLServer-->
+	  <Property Id="SQL_SERVER_EXISTS">
+		  <RegistrySearch Root="HKLM"
+						  Key="SOFTWARE\Microsoft\Microsoft SQL Server"
+						  Name="MSSQLServer10"
+						  Type="raw"
+						  Id="SqlRegSearch"/>
+	  </Property>
+	  <Launch Condition="NOT SQL_SERVER_EXISTS"
+			  Message="SQL Server is required for this installation. Installation failed."/>
+	  
+
+	  <Launch Condition="APP_DATA_FILE_EXISTS"
+			  Message="Required file 'C:\Samples\app.data' is missing. Installation cannot continue." />
+	  
+	  <!-- Windows 10 -->
+	  <!--<Launch Condition="VersionNT = 603  AND WindowsBUild = 10240"
+			  Message="This application is supported only on Windows 10."/>-->
+	  
+	  <!-- System Reboot is pending -->
+	  <Launch Condition="NOT MsiSystemRebootPending"
+			  Message="A system restart is pending. Please rebbot before installing."/>
+  
+  </Fragment>
+</Wix>

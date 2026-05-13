@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+	 xmlns:iis="http://wixtoolset.org/schemas/v4/wxs/iis"
+	 xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+	<Fragment>
+		<ComponentGroup Id="IISSetup"
+						Directory="INSTALLFOLDER">
+
+			<Component Id="IisSetupComponent"
+					   Guid="{0853B277-40AD-4732-A258-397D34C43CE2}">
+
+				<!-- Web Application Pool -->
+				<iis:WebAppPool Id="AppPool"
+								Name="MyMvcAppPool"
+								ManagedPipelineMode="integrated"
+								Identity="applicationPoolIdentity"/>
+				<!-- managedruntimeversion="2.0-4.8" -->
+				<!-- managedruntimeversion="" or can be skipped -->
+
+				<!-- Virtual Dir -->
+				<iis:WebVirtualDir Id="MyVirtualDir"
+								   Alias="AspNetMvcApp"
+								   Directory="INSTALLFOLDER"
+								   WebSite="DefaultWebSite">
+					<iis:WebApplication Id="MyWebApp"
+										Name="AspNetMvcApp"
+										WebAppPool="AppPool"/>
+				</iis:WebVirtualDir>
+
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

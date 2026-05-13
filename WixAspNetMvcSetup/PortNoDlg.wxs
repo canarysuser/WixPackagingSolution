@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <UI>
+		  <Dialog Id="PortNoDlg"
+				  Width="370"
+				  Height="270"
+				  Title="Web Server Settings">
+			  <Control Id="BannerBitmap"
+					   Type="Bitmap"
+					   X="0"
+					   Y="0"
+					   Width="270"
+					   Height="44"
+					   TabSkip="no"
+					   Text="!(loc.InstallDirDlgBannerBitmap)"/>
+			  <Control Id="BannerLine"
+					   Type="Line"
+					   X="0"
+					   Y="0"
+					   Width="270"
+					   Height="2"
+					   />
+			  <Control Id="Title"
+					   Type="Text"
+					   X="15"
+					   Y="6"
+					   Width="270"
+					   Height="15"
+					   Transparent="yes"
+					   TabSkip="no"
+					   Text="Port Configuration"/>
+			  <Control Id="Description"
+					   Type="Text"
+					   X="15"
+					   Y="25"
+					   Width="270"
+					   Height="15"
+					   Transparent="yes"
+					   TabSkip="yes"
+					   Text="Dialog for configuring the port number"/>
+			  <!-- Port Config Label and Input Box -->
+			  <Control Id="PortLabel"
+					   Type="Text"
+					   X="25"
+					   Y="100"
+					   Width="270"
+					   Height="20"
+					   Transparent="yes"
+					   TabSkip="yes"
+					   Text="Please enter the port number "/>
+			  <Control Id="PortInput"
+					   Type="Edit"
+					   X="25"
+					   Y="130"
+					   Width="270"
+					   Height="20"
+					   TabSkip="yes"
+					   Property="SITEPORTNO" Integer="yes"/>
+			  <Control Id="BannerLine2"
+					   Type="Line"
+					   X="0"
+					   Y="200"
+					   Width="270"
+					   Height="2"
+					   />
+				<!-- Action Buttons -->
+			  <Control Id="Back"
+					   Type="PushButton"
+					   X="180"
+					   Y="245"
+					   Width="65"
+					   Height="18"
+					   TabSkip="no"
+					   Text="Back"
+					   />
+			  <Control Id="Next"
+					   Type="PushButton"
+					   X="230"
+					   Y="245"
+					   Width="65"
+					   Height="18"
+					   TabSkip="no"
+					   Text="Next"
+					   >
+				  
+				  <Publish Event="SpawnDialog"
+						   Value="InvalidPortDialog"
+						   Condition="NOT SITEPORTNO"/>
+				  <Publish Event="SpawnDialog"
+						   Value="InvalidPortDialog"
+						   Condition="SITEPORTNO &lt;= 1024"/>
+			  </Control>
+
+		  </Dialog>
+		  <Dialog Id="InvalidPortDialog" Width="200" Height="80" Title="Port No Error">
+			  <Control Id="Ok"
+					   Type="PushButton"
+					   X="75"
+					   Y="50"
+					   Width="50"
+					   Height="30"
+					   TabSkip="no"
+					   Text="Ok"
+					   Default="yes"
+					   Cancel="yes"
+					   >
+				  <Publish Event="EndDialog"
+						   Value="Return"
+						   Order="1"/>
+			  </Control>
+			  <Control Id="Text"
+					   Type="Text"
+					   X="20"
+					   Y="20"
+					   Width="150"
+					   Height="30"
+					   Transparent="yes"
+					   Text="This port is alredy in use. Please enter a different port number."/>
+		  </Dialog>
+	  </UI>
+  </Fragment>
+</Wix>

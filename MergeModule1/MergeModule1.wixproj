@@ -1,0 +1,5 @@
+﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+  <PropertyGroup>
+    <OutputType>Module</OutputType>
+  </PropertyGroup>
+</Project>

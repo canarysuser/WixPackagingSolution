@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Fragment>
+	  
+	  <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+		  
+		  <Component Id="MainAppFile" Guid="{829F0E47-C747-4CE8-B93E-3F0194FB4D12}">
+			  
+			  <File Source="SampleWpfApp.exe"/>
+		  </Component>
+		  <Component Id="OtherAppFiles" Guid="{4C4299C2-AEFF-406D-B3E3-1EF6FDD4F6F1}">
+			  <File Source="SampleWpfApp.dll" KeyPath="yes"/>
+			  <File Source="SampleWpfApp.runtimeconfig.json"/>
+			  <File Source="SampleWpfApp.deps.json"/>
+		  </Component>
+	  </ComponentGroup>
+	  
+	  <ComponentGroup Id="AppShortcuts">
+		  <Component Id="AppShortcutComponent" Guid="{2FBFA01C-1399-4BB0-B676-1D35B759DCD7}" Directory="DesktopFolder">
+			  <Shortcut Id="DesktopShortcut"
+						Directory="DesktopFolder"
+						Name="SampleWpfApp"
+						Description="Sample WPF Application Shortcut"
+						WorkingDirectory="INSTALLFOLDER"
+						Target="[INSTALLFOLDER]SampleWpfApp.exe"/>
+			  <RegistryValue Root="HKCU"
+							 Key="Software\KWIT\SampleWpfApp"
+							 Name="Installed"
+							 Value="1"
+							 Type="integer"
+							 KeyPath="yes"/>
+							 
+		  </Component>
+	  </ComponentGroup>
+  </Fragment>
+</Wix>

@@ -1,0 +1,11 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Module Id="MM1" Guid="74a441da-35f8-4f9b-86f1-d870f669571c" Language="1033" Version="1.0.0.0">
+    <SummaryInformation Manufacturer="TODO Manufacturer" />
+
+    <Directory Id="MergeRedirectFolder">
+      <Component Guid="dbf1546d-6318-4767-9722-526e8e4acbf9">
+        <File Source="MergeModule.wxs" />
+      </Component>
+    </Directory>
+  </Module>
+</Wix>

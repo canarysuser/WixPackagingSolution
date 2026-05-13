@@ -1,0 +1,5 @@
+﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+  <ItemGroup>
+    <Content Include="Files\Notes.txt" />
+  </ItemGroup>
+</Project>

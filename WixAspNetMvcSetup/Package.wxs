@@ -1,0 +1,46 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" 
+	 xmlns:iis="http://wixtoolset.org/schemas/v4/wxs/iis"
+	 xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+	 >
+	<Package Id="WixAspNetMvcSetupPackage"
+			 Name="WixAspNetMvcSetup"
+			 Manufacturer="KWIT"
+			 Version="1.0.0"
+			 UpgradeCode="{C8ACFBEF-467D-49FC-85BC-CF1AFACE596D}">
+
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+		<Property Id="SITEPORTNO"
+				  Value="80"/>
+
+		<MediaTemplate EmbedCab="yes"/>
+		<iis:WebSite Id="DefaultWebSite"
+					 Description="Default Web Site">
+			<iis:WebAddress Id="PortNo"
+							Port="[SITEPORTNO]"/>
+		</iis:WebSite>
+		<!--<Directory Id="DependencyDir"
+				   Name="[INSTALLFOLDER]"/>-->
+		<DirectoryRef Id="INSTALLFOLDER">
+			<Merge Id="CommonDependencies"
+				   SourceFile="WixMvcMergeModule.msm"
+				   DiskId="1"
+				   Language="1033"/>
+		</DirectoryRef>
+		
+		<Feature Id="Main"
+				 Title="ASP.NET MVC Applciation"
+				 Description="Install the ASP.NET MVC Application">
+			<!--<Files Include="publish\wwwroot\**"
+				   Directory="INSTALLFOLDER"/>
+			<Files Include="publish\otherfiles\**"
+				   Directory="INSTALLFOLDER"/>-->
+			
+			<ComponentGroupRef Id="WebAppMainFiles" />
+			<ComponentGroupRef Id="IISSetup"/>
+			<MergeRef Id="CommonDependencies"/>
+		</Feature>
+		<!--<FeatureRef Id="CommonFiles"/>-->
+		<ui:WixUI Id="WixUI_InstallDirPort"
+				  InstallDirectory="INSTALLFOLDER"/>
+	</Package>
+</Wix>

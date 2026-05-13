@@ -1,0 +1,41 @@
+﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+  <PropertyGroup>
+    <OutputType>Module</OutputType>
+	  
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="publish\Otherfiles\cs\**" />
+    <Compile Remove="publish\Otherfiles\de\**" />
+    <Compile Remove="publish\Otherfiles\es\**" />
+    <Compile Remove="publish\Otherfiles\fr\**" />
+    <Compile Remove="publish\Otherfiles\it\**" />
+    <Compile Remove="publish\Otherfiles\ja\**" />
+    <Compile Remove="publish\Otherfiles\ko\**" />
+    <Compile Remove="publish\Otherfiles\pl\**" />
+    <Compile Remove="publish\Otherfiles\pt-BR\**" />
+    <Compile Remove="publish\Otherfiles\runtimes\**" />
+    <Compile Remove="publish\Otherfiles\ru\**" />
+    <Compile Remove="publish\Otherfiles\tr\**" />
+    <Compile Remove="publish\Otherfiles\zh-Hans\**" />
+    <Compile Remove="publish\Otherfiles\zh-Hant\**" />
+    <Compile Remove="publish\wwwroot\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\cs\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\de\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\es\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\fr\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\it\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\ja\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\ko\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\pl\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\pt-BR\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\runtimes\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\ru\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\tr\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\zh-Hans\**" />
+    <EmbeddedResource Remove="publish\Otherfiles\zh-Hant\**" />
+    <EmbeddedResource Remove="publish\wwwroot\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="publish\Otherfiles\" />
+  </ItemGroup>
+</Project>

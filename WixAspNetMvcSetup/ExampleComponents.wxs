@@ -1,0 +1,18 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<ComponentGroup Id="WebAppMainFiles"
+						Directory="INSTALLFOLDER">
+			<Component Id="WebAppFiles"
+					   Guid="{0BD4908F-C6FE-4702-9EA8-A1ACD0D6CE48}">
+				<File Source="publish\SampleMvcWebApp.exe"
+					  KeyPath="true"
+					  ShortName="SAMPLEAP" />
+				<File Source="publish\SampleMvcWebApp.dll"/>
+				<File Source="publish\SampleMvcWebApp.runtimeconfig.json"/>
+				<File Source="publish\SampleMvcWebApp.deps.json"/>
+				<File Source="publish\appsettings.json"/>
+				<File Source="publish\web.config"/>
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
