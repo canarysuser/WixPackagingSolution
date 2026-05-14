@@ -1,0 +1,12 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<Directory Id="NodeAppDir"
+				   Name="NodeAppDir">
+			<Directory Id="INSTALLFOLDER"
+					   Name="ServiceFiles">
+				<Directory Id="NODEMODULES"
+						   Name="node_modules"/>
+			</Directory>
+		</Directory>
+	</Fragment>
+</Wix>

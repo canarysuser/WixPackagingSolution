@@ -1,0 +1,31 @@
+<service>
+	<id>grpcnodeservice.exe</id>
+	<name>GrpcNodeService2</name>
+	<description>Runs the gRPC Service hosted in node env</description>
+	<executable>c:\program files\nodejs\node.exe</executable>
+	<argument>--harmony</argument>
+	<argument>[INSTALLFOLDER]node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>[INSTALLFOLDER]app.js</argument>
+	<argument>--scriptoptions=</argument>
+	<argument>--log</argument>
+	<argument>GrpcNodeService wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>2</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<logmode>rotate</logmode>
+	<stoptimeout>30sec</stoptimeout>
+	<serviceaccount>
+		<domain>SNWIN10WK</domain>
+		<user>LocalSystem</user>
+		<password></password>
+	</serviceaccount>
+	<workingdirectory>[INSTALLFOLDER]</workingdirectory>
+</service>

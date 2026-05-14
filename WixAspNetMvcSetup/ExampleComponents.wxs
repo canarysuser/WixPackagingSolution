@@ -3,15 +3,22 @@
 		<ComponentGroup Id="WebAppMainFiles"
 						Directory="INSTALLFOLDER">
 			<Component Id="WebAppFiles"
-					   Guid="{0BD4908F-C6FE-4702-9EA8-A1ACD0D6CE48}">
+					   Guid="{0BD4908F-C6FE-4702-9EA8-A1ACD0D6CE48}"
+					    >
 				<File Source="publish\SampleMvcWebApp.exe"
 					  KeyPath="true"
 					  ShortName="SAMPLEAP" />
 				<File Source="publish\SampleMvcWebApp.dll"/>
-				<File Source="publish\SampleMvcWebApp.runtimeconfig.json"/>
+				
+			</Component>
+			<Component Id="WebAppFiles2"
+					   Guid="{629271F6-F76A-4BF8-9F00-3F7E3D335005}"
+					   >
+				<File Source="publish\SampleMvcWebApp.runtimeconfig.json" KeyPath="yes"/>
 				<File Source="publish\SampleMvcWebApp.deps.json"/>
 				<File Source="publish\appsettings.json"/>
 				<File Source="publish\web.config"/>
+				<File Source="publish\node.exe"/>
 			</Component>
 		</ComponentGroup>
 	</Fragment>

@@ -11,6 +11,7 @@ namespace PortValidationCA
         [CustomAction]
         public static ActionResult PortValidationCA(Session session)
         {
+
             string prop = "PORT_IS_FREE";
             session.Log("Begin PortValidationCA");
             string portNoString = session["SITEPORTNO"]; 

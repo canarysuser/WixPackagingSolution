@@ -1,0 +1,29 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Package Id="TODO_Manufacturer.WIxNodeJsSetup" Name="WIxNodeJsSetup" Manufacturer="TODO Manufacturer" Version="1.0.0"
+		   Scope="perMachine"  >
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+	  
+
+    <Feature Id="Main"  >
+      <ComponentGroupRef Id="NodeServiceComponents"  />
+
+		<ComponentGroupRef Id="CopyNodeFiles" />
+		<!--<ComponentGroupRef Id="XmlFragment" />-->
+    </Feature>
+	  <InstallExecuteSequence>
+		  <Custom Action="InstallGrpcService" After="InstallFiles" Condition="NOT Installed"/>
+		  <!-- <Custom Action="SetAppDirectory"
+				  After="InstallGrpcService"
+				  Condition="NOT Installed"/> -->
+		  <Custom Action="SetAutoStart"
+				  After="InstallGrpcService"
+				  Condition="NOT Installed"/>
+		  <Custom Action="StartGrpcService"
+				  After="SetAutoStart"
+				  Condition="NOT Installed"/>
+		  <Custom Action="StopGrpcService" After="RemoveFiles" Condition="Installed"/>
+		  <Custom Action="RemoveService" After="StopGrpcService" Condition="Installed"/>
+
+	  </InstallExecuteSequence>
+  </Package>
+</Wix>

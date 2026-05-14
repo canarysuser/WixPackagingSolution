@@ -1,0 +1,30 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="ExampleComponents" Directory="INSTALLFOLDER">
+      <Component Id="ComComponent" Guid="{365452AA-D654-4D00-95B9-EF458007AD64}">
+		  <File Id="fil_MyComDll"
+				Source="Files\SampleCOMComponent.dll"
+				KeyPath="yes">
+			  <TypeLib Id="{A133BA8D-14FE-4EC8-8248-37464DD22A2E}"
+					   Language="0"
+					   MajorVersion="1"
+					   MinorVersion="0"
+					   HelpDirectory="INSTALLFOLDER"
+					   Description="My Calculator TypeLib"/>
+		  </File>
+		  <Class Id="{897F522A-EECD-4EC8-A1D0-FFE652F3F21A}"
+				 Context="InprocServer"
+				 ThreadingModel="both" 
+				 Server="fil_MyComDll"
+				 Description="My COM Calculator">
+			  <ProgId Id="SampleCOMComponent.Calculator"
+					  Description="My COM Calculator"/>
+		  </Class>
+		  
+		  <File Source="files\SampleCOMComponent.exp"/>
+		  
+		  <File Source="files\SampleCOMComponent.lib"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

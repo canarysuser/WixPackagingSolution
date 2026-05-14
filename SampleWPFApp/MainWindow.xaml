@@ -6,10 +6,44 @@
         xmlns:local="clr-namespace:SampleWPFApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Hello World"
-                   FontSize="24"
+    <!--<DockPanel>
+        <TextBlock Text="WPF App"
+                   FontSize="30"
+                   Background="DeepSkyBlue"
+                   Foreground="White"
                    TextAlignment="Center"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Top" DockPanel.Dock="Top" />
+        <Border BorderThickness="2"
+                BorderBrush="Red"
+                CornerRadius="3"
+                Background="PaleGoldenrod"
+                DockPanel.Dock="Left">
+            <TextBlock Margin="10"
+                       Padding="5"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Text="Left side Panel" />
+        </Border>
+        <Border BorderThickness="2"
+                BorderBrush="Red"
+                CornerRadius="3"
+                Background="Goldenrod"
+    >
+            <TextBlock Margin="10"
+                       Padding="5"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Text="Nothing to see here." />
+        </Border>
+
+    </DockPanel>-->
+    <Grid>
+        <TextBlock Margin="10"
+                   Padding="5"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   Text="Nothing to see here." />
     </Grid>
 </Window>

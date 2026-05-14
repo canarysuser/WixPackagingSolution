@@ -1,0 +1,115 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+	 xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util"
+	 xmlns:firewall="http://wixtoolset.org/schemas/v4/wxs/firewall">
+	<Fragment>
+		<ComponentGroup Id="CopyNodeFiles"
+						Directory="NODEMODULES">
+			<Files Include="dist\node_modules\**"/>
+		</ComponentGroup>
+		<ComponentGroup Id="NodeServiceComponents"
+						Directory="INSTALLFOLDER">
+
+			<Component Id="OtherAppFiles"
+					   Guid="{783FC1FC-C617-4E8D-9AB5-0EF98A85AE6F}">
+				<File Source="dist\app.js"
+					  KeyPath="yes"/>
+				<File Source="dist\package.json"/>
+				<File Source="dist\hello.proto"/>
+				<File Source ="dist\nodehost.js"/>
+				<File Source="dist\grpcnodeservice.exe.config"/>
+				<File Source="dist\nssm.exe"/>
+				<File Source="dist\node.exe"/>
+				<File Source="dist\grpcnodeservice.exe"/>
+				<File Source="dist\start-node.cmd"/>
+				<File Id="ServiceXml"
+					  Source="dist\grpcnodeservice.xml"
+				  />
+				
+			</Component>
+
+			<!--<Component Id="XmlConfig">
+			
+			-->
+			<!--<CreateFolder/>
+			<util:XmlFile Id="SetScriptPath"
+						  File="[ServiceXml]"
+						  Action="setValue"
+						  ElementPath="/service/argument"
+						  Value="&quot;[INSTALLFOLDER]app.js&quot;"/>-->
+			<!--
+		</Component>-->
+			<Component Id="NodeServiceInstaller"
+					   Guid="{889AD83F-5C89-48C7-8D35-391C7A96100F}">
+
+
+				<!--<ServiceInstall Id="ServiceInstaller"
+						  Type="shareProcess"
+						  Name="GrpcNodeService2"
+						  DisplayName="GrpcNodeService"
+						  Description="This is a node based gRPC Service"
+						  Start="auto"
+						  Account="LocalSystem"
+						  ErrorControl="normal" >
+			 
+		  </ServiceInstall>
+		  <ServiceControl Id="ServiceController"
+						  Name="GrpcNodeService2"
+						  Start="install"
+						  Stop="both"
+						  Remove="uninstall"
+						  Wait="yes"/>-->
+			</Component>
+
+			<Component Id="ServiceInstallComp"
+					   Guid="{D5D9CCDD-04C4-4181-9A10-22DDCFE185EF}">
+				<CreateFolder/>
+				<RegistryValue Root="HKLM"
+							   Key="Software\KWIT\GrpcBackend"
+							   Name="Installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"/>
+			</Component>
+
+		</ComponentGroup>
+	</Fragment>
+	<Fragment>
+		<CustomAction Id="InstallGrpcService"
+					  Directory="INSTALLFOLDER"
+					  Execute="deferred"
+					  Impersonate="no"
+					  ExeCommand="&quot;[INSTALLFOLDER]nssm.exe&quot; install GrpcBackEndService &quot;[INSTALLFOLDER]node.exe&quot; &quot;[INSTALLFOLDER]app.js&quot;"
+					  Return='check'/>
+		<!--<CustomAction Id="SetAppDirectory"
+					  Directory="INSTALLFOLDER"
+					  Execute="deferred"
+					  Impersonate="no"
+					  ExeCommand="&quot;[INSTALLFOLDER]nssm.exe&quot; set GrpcBackEndService AppDirectory &quot;[INSTALLFOLDER] &quot;"
+					  Return='check'/>-->
+		<CustomAction Id="SetAutoStart"
+					  Directory="INSTALLFOLDER"
+					  Execute="deferred"
+					  Impersonate="no"
+					  ExeCommand="&quot;[INSTALLFOLDER]nssm.exe&quot; set GrpcBackEndService Start SERVICE_AUTO_START"
+					  Return='check'/>
+		<CustomAction Id="StartGrpcService"
+					  Directory="INSTALLFOLDER"
+					  Execute="deferred"
+					  Impersonate="no"
+					  ExeCommand="sc start GrpcBackEndService"
+					  Return='ignore'/>
+		<CustomAction Id="StopGrpcService"
+					  Directory="INSTALLFOLDER"
+					  Execute="deferred"
+					  Impersonate="no"
+					  ExeCommand="sc stop GrpcBackEndService"
+					  Return='ignore'/>
+		<CustomAction Id="RemoveService"
+				  Directory="INSTALLFOLDER"
+				  Execute="deferred"
+				  Impersonate="no"
+				  ExeCommand="&quot;[INSTALLFOLDER]nssm.exe&quot; remove GrpcBackEndService confirm"
+				  Return="ignore"/>
+	</Fragment>
+
+</Wix>

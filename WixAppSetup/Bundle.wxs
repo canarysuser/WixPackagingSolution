@@ -1,0 +1,57 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal" 
+xmlns:utils="http://wixtoolset.org/schemas/v4/wxs/util">
+	<Bundle Id="WixCorporation.WixAppSetup"
+			Name="WixAppSetup"
+			Manufacturer="WixCorporation"
+			Version="1.0.0.0"
+			UpgradeCode="{32805BD1-26AE-496E-BE45-C751F90DCE0D}">
+
+
+		<BootstrapperApplication>
+			<bal:WixStandardBootstrapperApplication LicenseUrl="https://www.example.com/license"
+													Theme="hyperlinkLicense" />
+		</BootstrapperApplication>
+
+		<!-- Shared Variable -->
+		<!--<WixVariable Id="INSTALLFOLDER" 
+				  Overridable="yes"
+				  Value="WixCorp\WixSuite"
+				  bal:Overridable="yes"
+				  />-->
+
+		<Variable Name="INSTALLFOLDER"  Type="string" Hidden="no"
+				  Value="C:\Program Files\Wixcorp\WixSuite"
+				  bal:Overridable="yes"
+				  />
+		<utils:RegistrySearch Id="CheckSql"
+							  Root="HKLM"
+							  Key="SOFTWARE\Microsoft\Microsoft SQL Ser"
+							  Result="exists"
+							  Variable="SQL_Exists"/>
+		<Chain>
+			<MsiPackage Id="Package1"
+						SourceFile="Packages\en-us\MsiPackage1.msi"
+						Visible="no"
+						Vital="yes">
+				<MsiProperty Name="INSTALLFOLDER" Value="[INSTALLFOLDER]"/>
+				
+			</MsiPackage>
+			<MsiPackage Id="Package2" 
+						SourceFile="Packages\en-us\MsiPackage2.msi"
+						Visible="no" 
+						Vital="yes">
+				<MsiProperty Name="INSTALLFOLDER"
+							 Value="[INSTALLFOLDER]"/>
+			</MsiPackage>
+			<MsiPackage Id="Package3" 
+						SourceFile="Packages\en-us\MsiPackage3.msi"
+						Visible="no"
+					InstallCondition="NOT SQL_Exists"
+						Vital="yes">
+				<MsiProperty Name="INSTALLFOLDER"
+							 Value="[INSTALLFOLDER]"/>
+			</MsiPackage>
+		</Chain>
+
+	</Bundle>
+</Wix>

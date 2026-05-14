@@ -6,6 +6,7 @@
 						   Path="C:\Samples">
 			  <FileSearch Id="AppDataFileSearch" Name="app.data"/>
 		  </DirectorySearch>
+		  
 	  </Property>
 
 	  <!--Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQLServer-->
@@ -28,8 +29,8 @@
 			  Message="This application is supported only on Windows 10."/>-->
 	  
 	  <!-- System Reboot is pending -->
-	  <Launch Condition="NOT MsiSystemRebootPending"
-			  Message="A system restart is pending. Please rebbot before installing."/>
+	  <!--<Launch Condition="NOT MsiSystemRebootPending"
+			  Message="A system restart is pending. Please rebbot before installing."/>-->
   
   </Fragment>
 </Wix>

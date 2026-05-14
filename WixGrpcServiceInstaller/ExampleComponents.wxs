@@ -15,6 +15,7 @@
 					   Guid="{D9A5ACF1-B461-4B1A-A2DC-439F5C9F85D9}">
 				<File Source="publish\SamplegRPCService.exe"
 					  KeyPath="yes"/>
+				<File Source="$(env.ANDROID_HOME)\file.dll"/>
 				<ServiceInstall Id="ServiceInstaller"
 								Type="ownProcess"
 								Name="AspnetGRPCService"

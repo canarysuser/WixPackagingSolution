@@ -1,5 +1,12 @@
 ﻿<Project Sdk="WixToolset.Sdk/7.0.0">
   <ItemGroup>
+    <None Include="Files\SampleWPFApp.deps.json" />
+    <None Include="Files\SampleWPFApp.dll" />
+    <None Include="Files\SampleWPFApp.exe" />
+    <None Include="Files\SampleWPFApp.pdb" />
+    <None Include="Files\SampleWPFApp.runtimeconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="7.0.0" />
     <PackageReference Include="WixToolset.Util.wixext" Version="7.0.0" />
   </ItemGroup>

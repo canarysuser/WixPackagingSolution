@@ -1,0 +1,5 @@
+﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+  <PropertyGroup>
+    <OutputPath>D:\DownloadsFolder\CurrentTraining\Unisys\12.05.2026\Samples\WixPackagingSolution\WixAppSetup\Packages</OutputPath>
+  </PropertyGroup>
+</Project>

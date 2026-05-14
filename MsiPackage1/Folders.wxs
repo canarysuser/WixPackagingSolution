@@ -1,0 +1,11 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles64Folder">
+		<Directory Id="INSTALLFOLDER"
+				   Name="WixSuite">
+			<Directory Id="APPDIR"
+					   Name="Package1"/>
+		</Directory>
+    </StandardDirectory>
+  </Fragment>
+</Wix>

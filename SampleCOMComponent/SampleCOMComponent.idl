@@ -1,0 +1,37 @@
+// SampleCOMComponent.idl : IDL source for SampleCOMComponent
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SampleCOMComponent.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a31ab6c3-01e4-4dbc-9f98-a46dd53f02a7),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICalculator : IDispatch
+{
+	HRESULT AddNumbers([in] long a, [in] long b, [out, retval] long* result);
+};
+[
+	uuid(dccb4c4d-8bfa-4d61-ba09-0e2b0d94b8a1),
+	version(1.0),
+]
+library SampleCOMComponentLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(49904286-f9db-4c72-863b-e96efadde1ff)
+	]
+	coclass Calculator
+	{
+		[default] interface ICalculator;
+	};
+};
+
+import "shobjidl.idl";

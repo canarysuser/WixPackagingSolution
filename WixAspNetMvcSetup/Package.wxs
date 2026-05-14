@@ -9,6 +9,21 @@
 			 UpgradeCode="{C8ACFBEF-467D-49FC-85BC-CF1AFACE596D}">
 
 		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+		
+		<!--<MediaTemplate EmbedCab="no" CompressionLevel="low" MaximumCabinetSizeForLargeFileSplitting="25" MaximumUncompressedMediaSize="50"/>-->
+		<MediaTemplate EmbedCab="no"
+					   CompressionLevel="low"/>
+
+		<!--<Media Id="1"
+			   Cabinet="MyCab.cab"
+			   CompressionLevel="high"/>
+
+		<Media Id="2"
+			   Cabinet="MyCab2.cab"
+			   CompressionLevel="high"/>-->
+
+
+
 		<Property Id="SITEPORTNO"
 				  Value="80"/>
 		<Property Id="PORT_IS_FREE"
@@ -25,7 +40,7 @@
 					  Execute="immediate"
 					  Return="check"/>
 
-		<MediaTemplate EmbedCab="yes"/>
+
 		<iis:WebSite Id="DefaultWebSite"
 					 Description="Default Web Site">
 			<iis:WebAddress Id="PortNo"
@@ -40,17 +55,17 @@
 				   Language="1033"/>
 		</DirectoryRef>
 		
-		<Feature Id="Main"
+		<Feature Id="Main" 
 				 Title="ASP.NET MVC Applciation"
-				 Description="Install the ASP.NET MVC Application">
+				 Description="Install the ASP.NET MVC Application" >
 			<!--<Files Include="publish\wwwroot\**"
 				   Directory="INSTALLFOLDER"/>
 			<Files Include="publish\otherfiles\**"
 				   Directory="INSTALLFOLDER"/>-->
 			
-			<ComponentGroupRef Id="WebAppMainFiles" />
+			<ComponentGroupRef Id="WebAppMainFiles"   />
 			<ComponentGroupRef Id="IISSetup"/>
-			<MergeRef Id="CommonDependencies"/>
+			<MergeRef Id="CommonDependencies" />
 		</Feature>
 		<!--<FeatureRef Id="CommonFiles"/>-->
 		<ui:WixUI Id="WixUI_InstallDirPort"

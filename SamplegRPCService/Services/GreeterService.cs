@@ -1,7 +1,11 @@
+using Grpc.AspNetCore.Web;
 using Grpc.Core;
+using Microsoft.AspNetCore.Cors;
 
 namespace SamplegRPCService.Services
 {
+    [EnableGrpcWeb]
+    
     public class GreeterService(ILogger<GreeterService> logger) : Greeter.GreeterBase
     {
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
