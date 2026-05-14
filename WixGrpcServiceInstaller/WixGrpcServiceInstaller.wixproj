@@ -3,4 +3,14 @@
     <Compile Remove="publish\**" />
     <EmbeddedResource Remove="publish\**" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="publish\UpdateConfig - Copy.ps1" />
+    <None Include="publish\UpdateConfig.ps1" />
+    <None Include="UpdateConfig.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.PowerShell.wixext" Version="7.0.0" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="7.0.0" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="7.0.0" />
+  </ItemGroup>
 </Project>

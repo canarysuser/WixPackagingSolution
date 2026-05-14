@@ -18,13 +18,33 @@
 				<File Source ="dist\nodehost.js"/>
 				<File Source="dist\grpcnodeservice.exe.config"/>
 				<File Source="dist\nssm.exe"/>
-				<File Source="dist\node.exe"/>
+				
 				<File Source="dist\grpcnodeservice.exe"/>
 				<File Source="dist\start-node.cmd"/>
 				<File Id="ServiceXml"
 					  Source="dist\grpcnodeservice.xml"
 				  />
 				
+			</Component>
+			<Component Id="NodeFirewallComponent"
+					   Guid="{CF89A37A-19CC-4564-8009-ABAAB45D1850}">
+				<File Source="dist\node.exe" Id="NodeExec"/>
+				<firewall:FirewallException Id="GrpcFirewallRule"
+											Name="Node gRPC Backend"
+											Program="[#NodeExec]"
+											Profile="all"
+											Scope="any"
+											IgnoreFailure="yes"
+											/>
+				<firewall:FirewallException Id="GrpcPort"
+											Name="Node TCP Port"
+											Port="50050"
+											Protocol="tcp"
+											Profile="all"
+											Scope="any"
+											IgnoreFailure="yes"
+											
+											/>
 			</Component>
 
 			<!--<Component Id="XmlConfig">

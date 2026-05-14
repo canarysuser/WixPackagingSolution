@@ -1,11 +1,38 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Id="TODO_Manufacturer.WixGrpcServiceInstaller" Name="WixGrpcServiceInstaller" Manufacturer="TODO Manufacturer" Version="1.0.0">
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+	<Package Id="TODO_Manufacturer.WixGrpcServiceInstaller"
+			 Name="WixGrpcServiceInstaller"
+			 Manufacturer="TODO Manufacturer"
+			 Version="1.0.0">
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
-    <Feature Id="Main">
-		
-      <ComponentGroupRef Id="ServiceComponentGroup" />
-		<ComponentGroupRef Id="RuntimeComponentGroup" />
-    </Feature>
-  </Package>
+		<Property Id="HTTPPORT"
+				  Hidden="yes"
+				  Secure="yes"
+				  Value="51234"/>
+
+		<Feature Id="Main">
+
+			<ComponentGroupRef Id="ServiceComponentGroup" />
+			<ComponentGroupRef Id="RuntimeComponentGroup" />
+		</Feature>
+
+		<CustomAction Id="SetJsonData"
+					  Property="UpdateHttpPort"
+					  Value="PORT=[HTTPPORT];INSTALLDIR=[INSTALLFOLDER]"
+					  Execute="immediate"/>
+		<CustomAction Id="UpdateJsonCA"
+					  Directory="INSTALLFOLDER"
+					  ExeCommand="powershell.exe -ExecutionPolicy ByPass -NoProfile -File &quot;[INSTALLFOLDER]UpdateConfig.ps1&quot; &quot;[HTTPPORT]&quot; &quot;[INSTALLFOLDER]\&quot;\ "
+					  Execute="deferred"
+					  Return="check"
+					  Impersonate="no"/>
+		<InstallExecuteSequence>
+			<Custom Action="SetJsonData"
+					After="InstallFiles"
+					Condition="NOT Installed" />
+			<Custom Action="UpdateJsonCA"
+					After="SetJsonData"
+					Condition="NOT Installed" />
+		</InstallExecuteSequence>
+	</Package>
 </Wix>

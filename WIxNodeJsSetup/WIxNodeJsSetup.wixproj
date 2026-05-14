@@ -1,6 +1,6 @@
 ﻿<Project Sdk="WixToolset.Sdk/7.0.0">
   <ItemGroup>
-    <Folder Include="dist\" />
+    <None Include="dist\UpdateConfig.ps1" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.Firewall.wixext" Version="7.0.0" />
